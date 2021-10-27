@@ -9,7 +9,7 @@ python main.py --max_len 512 --epochs 1 --batch 16 --label_batch 200 --masked Tr
 </pre>
 
 ### Model Framework
-![image](https://user-images.githubusercontent.com/46701548/139093319-4cc2d393-a9ca-4b60-829c-c43cf4f7252c.png)
+![image](https://user-images.githubusercontent.com/46701548/139094004-266b0ed0-4ab6-49e9-a089-4e9069707b55.png)
 
 
 - 아래 Text Self training with XAI 실험에서 Bert+CNN 과 GradCAM을 활용한 코드 입니다.
