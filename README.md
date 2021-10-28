@@ -8,6 +8,26 @@ python main.py --max_len 512 --epochs 1 --batch 16 --label_batch 200 --masked Tr
 </code>
 </pre>
 
+### Requirement
+
+- python >= 3.8
+- pandas
+- numpy
+- pytorch
+- transformers
+- seaborn
+- nltk
+- cv2
+
+### Command
+
+- pip install pandas
+- pip install numpy
+- pip install seaborn
+- pip intsall nltk
+- pip intsall transformers
+- pip3 install torch==1.10.0+cu102 torchvision==0.11.1+cu102 torchaudio===0.10.0+cu102 -f https://download.pytorch.org/whl/cu102/torch_stable.html
+
 ### Model Framework
 
 ![image](https://user-images.githubusercontent.com/46701548/139094004-266b0ed0-4ab6-49e9-a089-4e9069707b55.png)
