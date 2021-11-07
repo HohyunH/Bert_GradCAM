@@ -44,10 +44,10 @@ pooled_gradients = torch.mean(gradients, dim=[0, 2])
 for k in range(gradients.shape[1]):
     activations[:, k, :] *= pooled_gradients[k]
 
-heatmap = torch.mean(activations, dim=1).squeeze()
-heatmap = heatmap.view(1, -1).cpu().numpy()
-heatmap = cv2.resize(heatmap, dsize=(512, 1))
-heatmap = np.multiply(heatmap, masks.cpu().numpy())
+grad_cam_score = torch.mean(activations, dim=1).squeeze()
+grad_cam_score = grad_cam_score.view(1, -1).cpu().numpy()
+grad_cam_score = cv2.resize(grad_cam_score, dsize=(512, 1))
+grad_cam_score = np.multiply(grad_cam_score, masks.cpu().numpy())
 ```
 
 ### 문장내 단어 중요도 추출 예시
