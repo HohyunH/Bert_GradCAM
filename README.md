@@ -32,6 +32,28 @@ python main.py --max_len 512 --epochs 1 --batch 16 --label_batch 200 --masked Tr
 
 ![image](https://user-images.githubusercontent.com/46701548/139094004-266b0ed0-4ab6-49e9-a089-4e9069707b55.png)
 
+- BERT 이후에 붙혀진 CNN 에서 마지막 Convolution layer에서 Grad-CAM score를 산출한다.
+
+- 인공 신경망 연산 과정에서 계산되는 gradients 값과 activation 값의 연산으로 Grad-CAM score를 산출할 수 있다.
+```python
+gradients = grad_cam.get_activations_gradient()    
+activations = grad_cam.get_activations(sentence, masks).detach()
+
+# global average pooling : 각 채널별로 평균 구함.
+pooled_gradients = torch.mean(gradients, dim=[0, 2])
+for k in range(gradients.shape[1]):
+    activations[:, k, :] *= pooled_gradients[k]
+
+heatmap = torch.mean(activations, dim=1).squeeze()
+heatmap = heatmap.view(1, -1).cpu().numpy()
+heatmap = cv2.resize(heatmap, dsize=(512, 1))
+heatmap = np.multiply(heatmap, masks.cpu().numpy())
+```
+
+### 문장내 단어 중요도 추출 예시
+
+![image](https://user-images.githubusercontent.com/46701548/140642315-8d850b29-9b09-4643-9bba-b0b16278e3d1.png)
+
 
 - 아래 Text Self training with XAI 실험에서 Bert+CNN 과 GradCAM을 활용한 코드 입니다.
 
